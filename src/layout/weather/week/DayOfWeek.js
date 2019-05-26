@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Icon from '../icons/Icon';
 
 const DayCol = styled.div`
   display: flex;
@@ -29,7 +30,10 @@ export default props => {
         {date.toLocaleString(window.navigator.language, { weekday: 'short' })}
       </DayName>
       <DayTemp>{Math.ceil(temperature)}</DayTemp>
-      <DayIcon>{conditions}</DayIcon>
+      <DayIcon>
+        <Icon type={conditions} animated={false} small />
+      </DayIcon>
+      <DayName>{conditions}</DayName>
     </DayCol>
   );
 };

@@ -11,6 +11,7 @@ const LayoutContainer = styled.div`
   display: flex;
   background-color: #37393f;
   flex-direction: column;
+  flex-grow: 1;
   height: 100%;
 `;
 

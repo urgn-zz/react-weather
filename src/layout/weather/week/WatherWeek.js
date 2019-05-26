@@ -7,6 +7,7 @@ const Days = styled.div`
   flex-direction: row;
   flex-flow: row nowrap;
   justify-content: center;
+  padding-bottom: 24px;
 `;
 
 export default props => {

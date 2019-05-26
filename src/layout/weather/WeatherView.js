@@ -8,9 +8,9 @@ export default props => {
   } = props;
 
   return (
-    <div>
+    <>
       <WeatherNow {...now} />
       <WeatherWeek days={week} />
-    </div>
+    </>
   );
 };

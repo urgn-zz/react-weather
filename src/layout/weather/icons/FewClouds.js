@@ -13,7 +13,9 @@ export default class FewClouds extends Component {
   }
 
   checkLoaded() {
-    if (this.left && this.right && this.body) {
+    const { animated } = this.props;
+
+    if (this.left && this.right && animated) {
       this.animate();
     }
   }
@@ -22,12 +24,6 @@ export default class FewClouds extends Component {
     function r() {
       this.restart();
     }
-
-    new TimelineLite({ pasued: true })
-      .to(this.body, 1, {
-        opacity: 1
-      })
-      .restart();
 
     new TimelineLite({
       pasued: true,
@@ -47,32 +43,34 @@ export default class FewClouds extends Component {
   }
 
   render() {
+    const { small, ref } = this.props;
     return (
-      <div
-        ref={r => {
-          this.body = r;
-          this.checkLoaded();
-        }}
-        style={{
-          opacity: 0
-        }}
-      >
-        <WhiteCloud
-          width={180}
-          x={-500}
-          ref={r => {
-            this.left = r;
-            this.checkLoaded();
-          }}
-        />
-        <WhiteCloud
-          width={300}
-          ref={r => {
-            this.right = r;
-            this.checkLoaded();
-          }}
-        />
-      </div>
+      <>
+        {small ? (
+          <svg ref={ref} width={50} height={50} viewBox="0 0 75 75">
+            <WhiteCloud />
+          </svg>
+        ) : (
+          <svg ref={ref} viewBox="0 0 75 75" width="300">
+            <WhiteCloud
+              x={0}
+              y={20}
+              scale={0.5}
+              ref={r => {
+                this.left = r;
+                this.checkLoaded();
+              }}
+            />
+            <WhiteCloud
+              x={5}
+              ref={r => {
+                this.right = r;
+                this.checkLoaded();
+              }}
+            />
+          </svg>
+        )}
+      </>
     );
   }
 }

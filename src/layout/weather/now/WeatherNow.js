@@ -10,6 +10,7 @@ const WeatherNow = styled.div`
   flex-direction: column;
   color: #fff;
   text-align: center;
+  justify-content: center;
 `;
 
 const CityName = styled.div`
@@ -31,7 +32,7 @@ export default props => {
     <WeatherNow>
       <CityName>{location}</CityName>
       <Temperature>{Math.ceil(temperature)}</Temperature>
-      <Icon type={conditions} />
+      <Icon type="Rain" animated />
     </WeatherNow>
   );
 };

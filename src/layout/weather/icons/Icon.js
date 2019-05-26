@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { TimelineLite } from 'gsap';
 import ClearSky from './ClarSky';
 import FewClouds from './FewClouds';
+import Rain from './Rain';
 
 const IconContainer = styled.div`
   display: flex;
@@ -9,25 +11,60 @@ const IconContainer = styled.div`
   justify-content: center;
 `;
 
-export default props => {
-  const { type } = props;
+export default class Icon extends Component {
+  constructor() {
+    super();
 
-  return (
-    <IconContainer>
-      {(() => {
-        switch (type) {
-          case 'Clear': {
-            return <ClearSky width={300} />;
-          }
-          case 'Clouds': {
-            return <FewClouds />;
-          }
+    this.body = null;
+  }
 
-          default: {
-            return `icon for the ${type}`;
+  checkLoaded() {
+    const { animated } = this.props;
+
+    if (this.body && animated) {
+      this.animate();
+    }
+  }
+
+  animate() {
+    new TimelineLite({ pasued: true })
+      .from(this.body, 0, {
+        opacity: 0
+      })
+      .to(this.body, 1, {
+        opacity: 1
+      })
+      .restart();
+  }
+
+  render() {
+    const { type } = this.props;
+
+    return (
+      <IconContainer
+        ref={r => {
+          this.body = r;
+        }}
+      >
+        {(() => {
+          switch (type) {
+            case 'Clear': {
+              // return <FewClouds {...this.props} />;
+              return <ClearSky {...this.props} />;
+            }
+            case 'Clouds': {
+              return <FewClouds {...this.props} />;
+            }
+            case 'Rain': {
+              return <Rain {...this.props} />;
+            }
+
+            default: {
+              return `icon for the ${type}`;
+            }
           }
-        }
-      })()}
-    </IconContainer>
-  );
-};
+        })()}
+      </IconContainer>
+    );
+  }
+}

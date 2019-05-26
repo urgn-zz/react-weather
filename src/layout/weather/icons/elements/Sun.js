@@ -10,7 +10,9 @@ export default class Sun extends Component {
   }
 
   checkLoaded() {
-    if (this.outer && this.middle) {
+    const { animated } = this.props;
+
+    if (this.outer && this.middle && animated) {
       this.animate();
     }
   }
@@ -41,7 +43,7 @@ export default class Sun extends Component {
 
   render() {
     return (
-      <svg viewBox="0 0 70 70" {...this.props}>
+      <g>
         <g data-svg-origin="35 35">
           <circle
             fill="#FFE499"
@@ -77,7 +79,7 @@ export default class Sun extends Component {
             data-svg-origin="35 35"
           />
         </g>
-      </svg>
+      </g>
     );
   }
 }

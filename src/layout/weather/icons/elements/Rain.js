@@ -34,8 +34,11 @@ export default class Rain extends Component {
     }
 
     this.tweens = this.lines.map(line => {
-      if (!line) return;
+      if (!line) {
+        return;
+      }
       const lineAttrs = { offset: Math.abs(line.style.strokeDashoffset) };
+      // eslint-disable-next-line consistent-return
       return new TimelineLite({
         pasued: true,
         onComplete: r,
@@ -50,23 +53,6 @@ export default class Rain extends Component {
     });
   }
 
-  //
-  //
-  //	thisPath.attr({
-  // strokeDashoffset:fakeTweenObj.currentLength
-
-  /* var fakeTweenObj = {currentLength:0};
-		var pathLength = 0;
-
-		tl.to(fakeTweenObj, speed, {
-			currentLength:-dash -gap, 
-			onUpdate:drawTheLine, onUpdateParams:[fakeTweenObj, dashedLines[i]], 
-			repeat:-1,
-			ease:Linear.easeNone
-		}, i*.1);
-	});
-  } */
-
   render() {
     const { x, y, scale } = this.props;
     return (
@@ -75,22 +61,7 @@ export default class Rain extends Component {
         transform={`translate(${x || 0} ${y || 0}) scale(${scale || 1})`}
         data-svg-origin="37.05000114440918 28.700000762939453"
       >
-        {/* (() => {
-          const result = [];
-
-          for (let i = 0; i < commonTags; i++) {}
-          const item = (
-            <path
-              fill="#33B5D9"
-              d="M33.9,40.1c-0.1,0.5-0.4,3.1-0.9,3.9c-0.1,0.2-0.3,0.4-0.4,0.5c-0.4,0.2-0.8,0.3-1.1,0.1
-		c-0.6-0.3-0.6-1.3-0.1-2.2C31.8,41.8,33.2,40.6,33.9,40.1z"
-            />
-          );
-
-          return result;
-        })() */
-
-        offsets.map((offset, i) => (
+        {offsets.map((offset, i) => (
           <line
             key={`RainLine_${i}`}
             fill="none"

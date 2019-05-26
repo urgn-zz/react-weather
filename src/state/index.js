@@ -4,14 +4,15 @@ import createSagaMiddleware from 'redux-saga';
 import ReduxThunk from 'redux-thunk';
 
 import layoutReducer from './layout/reducer';
+import locationsReducer from './locations/reducer';
 import { apiReducer } from './api/reducer';
 import { initSagas } from './api/sagas';
 import { actionGetWeatherData } from './api/actions';
 
 const rootReducer = combineReducers({
   layout: layoutReducer,
-  apiData: apiReducer
-  //  locations: LocationsReducer
+  apiData: apiReducer,
+  location: locationsReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

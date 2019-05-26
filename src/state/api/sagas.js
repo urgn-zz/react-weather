@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { put, takeLatest } from 'redux-saga/effects';
 import { map } from 'ramda';
 import { actionWeatherDataFailed, actionWeatherDataSuccess } from './actions';
@@ -38,6 +39,9 @@ function* getWeatherSaga(action) {
   }
 }
 
+function* validateLocationSaga(action) {}
+
 export function* initSagas() {
+  yield takeLatest(API_GET_WEATHER, getWeatherSaga);
   yield takeLatest(API_GET_WEATHER, getWeatherSaga);
 }

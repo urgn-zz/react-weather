@@ -1,4 +1,9 @@
-import { ADD_LOCATION, REMOVE_LOCATION, REQUEST_LOCATION } from './consts';
+import {
+  ADD_LOCATION,
+  REMOVE_LOCATION,
+  REQUEST_LOCATION,
+  REQUEST_LOCATION_FAIL
+} from './consts';
 
 const initState = {
   locations: [],
@@ -13,12 +18,12 @@ export default (state = initState, action) => {
       return { ...state, request: { processing: true } };
     }
     case ADD_LOCATION: {
-      const response = action.payload.value;
-      const { name, id } = response;
+      const { name, id, country } = action.payload.value;
       const locations = state.locations.slice(0);
       locations.push({
         name,
-        id
+        id,
+        country
       });
       return { ...state, request: { processing: false }, locations };
     }
@@ -28,6 +33,14 @@ export default (state = initState, action) => {
       const index = locations.indexOf(locations.find(l => l.id === id));
       const newLocations = locations.slice(0).splice(index, 1);
       return { ...state, locations: newLocations };
+    }
+    case REQUEST_LOCATION_FAIL: {
+      return {
+        ...state,
+        request: {
+          processing: false
+        }
+      };
     }
     default:
       return state;

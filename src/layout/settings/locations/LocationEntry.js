@@ -19,10 +19,12 @@ const EntryRemove = styled.div`
 const RemButton = styled.button``;
 
 export default props => {
-  const { id, name, onRemove } = props;
+  const { id, name, country, onRemove } = props;
   return (
     <Entry>
-      <EntryName>{name}</EntryName>
+      <EntryName>
+        {name} [{country}]
+      </EntryName>
       <EntryRemove>
         <RemButton onClick={() => onRemove(id)}>DELETE</RemButton>
       </EntryRemove>

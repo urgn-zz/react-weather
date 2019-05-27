@@ -3,17 +3,24 @@ import { put, takeLatest } from 'redux-saga/effects';
 import { map } from 'ramda';
 import { actionWeatherDataFailed, actionWeatherDataSuccess } from './actions';
 import { API_GET_WEATHER } from './consts';
+import { REQUEST_LOCATION } from '../locations/consts';
+import {
+  requestLocationAddFail,
+  requestLocationAddSuccess
+} from '../locations/actions';
 
 const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 
-const getApiUrls = cityId => {
+const getApiUrls = (cityId, cityQuery) => {
   const apiUrl = `${corsProxy}http://api.openweathermap.org/data/2.5/`;
 
   return map(
-    s => `${s}&apiKey=${process.env.REACT_APP_OWM_API_KEY}&units=metric`,
+    s =>
+      `${apiUrl}${s}&apiKey=${process.env.REACT_APP_OWM_API_KEY}&units=metric`,
     {
-      now: `${apiUrl}weather?id=${cityId}`,
-      week: `${apiUrl}forecast?id=${cityId}`
+      now: `weather?id=${cityId}`,
+      week: `forecast?id=${cityId}`,
+      cityQuery: `weather?q=${cityQuery}`
     }
   );
 };
@@ -39,9 +46,24 @@ function* getWeatherSaga(action) {
   }
 }
 
-function* validateLocationSaga(action) {}
+function* validateLocationSaga(action) {
+  try {
+    const { cityQuery } = getApiUrls(null, action.payload.value);
+
+    const queryResult = yield fetch(cityQuery);
+
+    if (queryResult.status !== 200) {
+      yield put(requestLocationAddFail());
+    } else {
+      const parsedQueryResult = yield queryResult.json();
+      yield put(requestLocationAddSuccess(parsedQueryResult));
+    }
+  } catch (e) {
+    yield put(requestLocationAddFail());
+  }
+}
 
 export function* initSagas() {
   yield takeLatest(API_GET_WEATHER, getWeatherSaga);
-  yield takeLatest(API_GET_WEATHER, getWeatherSaga);
+  yield takeLatest(REQUEST_LOCATION, validateLocationSaga);
 }

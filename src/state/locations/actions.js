@@ -1,4 +1,9 @@
-import { ADD_LOCATION, REMOVE_LOCATION, REQUEST_LOCATION } from './consts';
+import {
+  ADD_LOCATION,
+  REMOVE_LOCATION,
+  REQUEST_LOCATION,
+  REQUEST_LOCATION_FAIL
+} from './consts';
 
 export const requestLocationAdd = query => {
   return {
@@ -6,6 +11,12 @@ export const requestLocationAdd = query => {
     payload: {
       value: query
     }
+  };
+};
+
+export const requestLocationAddFail = () => {
+  return {
+    type: REQUEST_LOCATION_FAIL
   };
 };
 
@@ -24,5 +35,22 @@ export const removeLocation = location => {
     payload: {
       value: location
     }
+  };
+};
+
+export const requestLocationAddSuccess = response => {
+  const {
+    id,
+    name,
+    sys: { country }
+  } = response;
+  return dispatch => {
+    dispatch(
+      addLocation({
+        id,
+        name,
+        country
+      })
+    );
   };
 };

@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { map, values } from 'ramda';
+import { reverse } from 'ramda';
 import styled from 'styled-components';
-import { setActiveView } from '../../state/layout/actions';
-import VIEWS from '../views';
+import { setActiveView, setActiveCityIndex } from '../../state/layout/actions';
 import WeatherView from '../weather/WeatherView';
+import WeatherNavigation from './WaetherNavigation';
+import VIEWS from '../views';
 
 const SliederContainer = styled.div`
   display: flex;
@@ -13,39 +14,35 @@ const SliederContainer = styled.div`
   flex-direction: column;
 `;
 
-const SettingsButton = styled.button``;
-
 const Slider = props => {
-  const { weather } = props;
-
+  const { cityIndex, cityList } = props;
+  const list = reverse(cityList);
   return (
     <SliederContainer>
-      <SettingsButton
-        onClick={() => {
-          props.setActiveView(VIEWS.SETTINGS);
-        }}
-      >
-        {'COG'}
-      </SettingsButton>
-      {values(
-        map(data => {
-          return <WeatherView data={data} />;
-        }, weather)
-      )}
+      <WeatherNavigation
+        onCogClicked={() => props.setActiveView(VIEWS.SETTINGS)}
+        onCityIndexChanged={index => props.setActiveCityIndex(index)}
+        activeCityIndex={cityIndex}
+        activeCityList={list}
+      />
+      <WeatherView cityId={list[cityIndex].id} />
     </SliederContainer>
   );
 };
 
 function mapStateToProps(state) {
   return {
-    weather: state.apiData.weather
+    weather: state.apiData.weather,
+    cityIndex: state.layout.activeCityIndex,
+    cityList: state.location.locations
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
-      setActiveView
+      setActiveView,
+      setActiveCityIndex
     },
     dispatch
   );

@@ -4,7 +4,7 @@ import LocationEntry from './LocationEntry';
 
 const List = styled.div``;
 
-export default () => {
+export default props => {
   const { items, onRemove } = props;
 
   return (

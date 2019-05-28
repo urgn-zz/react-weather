@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Entry = styled.div`
+  margin-bottom: 4px;
   display: flex;
   flex-direction: row;
 `;

@@ -7,6 +7,7 @@ import { setActiveView, setActiveCityIndex } from '../../state/layout/actions';
 import WeatherView from '../weather/WeatherView';
 import WeatherNavigation from './WaetherNavigation';
 import VIEWS from '../views';
+import ReactSwipe from 'react-swipe';
 
 const SliederContainer = styled.div`
   display: flex;
@@ -17,15 +18,22 @@ const SliederContainer = styled.div`
 const Slider = props => {
   const { cityIndex, cityList } = props;
   const list = reverse(cityList);
+  let reactSwipeEl;
   return (
     <SliederContainer>
       <WeatherNavigation
         onCogClicked={() => props.setActiveView(VIEWS.SETTINGS)}
-        onCityIndexChanged={index => props.setActiveCityIndex(index)}
+        onNext={() => reactSwipeEl.next()}
+        onPrev={() => reactSwipeEl.prev()}
         activeCityIndex={cityIndex}
         activeCityList={list}
       />
-      <WeatherView cityId={list[cityIndex].id} />
+      <ReactSwipe
+        swipeOptions={{ continuous: false }}
+        ref={el => (reactSwipeEl = el)}
+      >
+      { list.map((city) => <div><WeatherView cityId={city.id} /></div>)}
+      </ReactSwipe>
     </SliederContainer>
   );
 };

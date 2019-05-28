@@ -15,7 +15,7 @@ export default class Rain extends Component {
 
   componentWillUnmount() {
     if (this.tweens) {
-      this.tweens.forEach(tween => tween.kill());
+      this.tweens.forEach(tween => tween && tween.kill());
     }
   }
 

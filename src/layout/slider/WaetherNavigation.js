@@ -6,7 +6,8 @@ const SettingsButton = styled.button``;
 export default props => {
   const {
     onCogClicked,
-    onCityIndexChanged,
+    onPrev,
+    onNext,
     activeCityIndex,
     activeCityList
   } = props;
@@ -14,18 +15,14 @@ export default props => {
   return (
     <div>
       <SettingsButton
-        disabled={activeCityIndex <= 0}
-        onClick={() => {
-          onCityIndexChanged(activeCityIndex - 1);
-        }}
+        onClick={() => onPrev()}
       >
         {'<'}
       </SettingsButton>
       <SettingsButton onClick={() => onCogClicked()}>COG</SettingsButton>
       <SettingsButton
-        disabled={activeCityIndex >= activeCityList.length - 1}
         onClick={() => {
-          onCityIndexChanged(activeCityIndex + 1);
+          onNext()
         }}
       >
         {'>'}

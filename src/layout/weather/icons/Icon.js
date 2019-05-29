@@ -4,6 +4,8 @@ import { TimelineLite } from 'gsap';
 import ClearSky from './ClarSky';
 import FewClouds from './FewClouds';
 import Rain from './Rain';
+import Snow from './Snow';
+import Thunderstorm from './Thunderstorm';
 
 const IconContainer = styled.div`
   display: flex;
@@ -58,7 +60,12 @@ export default class Icon extends Component {
             case 'Rain': {
               return <Rain {...this.props} />;
             }
-
+            case 'Thunderstorm': {
+              return <Thunderstorm {...this.props} />;
+            }
+            case 'Snow': {
+              return <Snow {...this.props} />;
+            }
             default: {
               return `icon for the ${type}`;
             }

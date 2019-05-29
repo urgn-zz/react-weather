@@ -1,89 +1,31 @@
-import React, { Component } from 'react';
-import { TimelineLite } from 'gsap';
+import React from 'react';
+import Falling from './Falling';
 
-const offsets = [9, 6, 3, 15, 12, 9, 6];
-const initialCords = [{ x: 25, y: 40 }, { x: 16, y: 55 }];
-const space = { x: 7, y: 0 };
-
-export default class Rain extends Component {
-  constructor() {
-    super();
-
-    this.lines = [];
-    this.tweens = null;
-  }
-
-  componentWillUnmount() {
-    if (this.tweens) {
-      this.tweens.forEach(tween => tween && tween.kill());
-    }
-  }
-
-  checkLoad() {
-    const { animated } = this.props;
-
-    if (this.lines.length >= offsets.length && animated) {
-      this.animate();
-    }
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  animate() {
-    function r() {
-      this.restart();
-    }
-
-    this.tweens = this.lines.map(line => {
-      if (!line) {
-        return;
-      }
-      const lineAttrs = { offset: Math.abs(line.style.strokeDashoffset) };
-      // eslint-disable-next-line consistent-return
-      return new TimelineLite({
-        pasued: true,
-        onComplete: r,
-        onUpdate: () => {
-          // eslint-disable-next-line no-param-reassign
-          line.style.strokeDashoffset = -lineAttrs.offset;
-        }
-      })
-        .to(lineAttrs, Math.min(1, 0.4 + Math.random()), { offset: 20 })
-        .to(lineAttrs, 0, { offset: 2 })
-        .restart();
-    });
-  }
-
-  render() {
-    const { x, y, scale } = this.props;
-    return (
-      <g
-        id="dashedLines"
-        transform={`translate(${x || 0} ${y || 0}) scale(${scale || 1})`}
-        data-svg-origin="37.05000114440918 28.700000762939453"
-      >
-        {offsets.map((offset, i) => (
-          <line
-            key={`RainLine_${i}`}
-            fill="none"
-            stroke="#33B5D9"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeMiterlimit="10"
-            x1={initialCords[0].x + i * space.x}
-            y1={initialCords[0].y + i * space.y}
-            x2={initialCords[1].x + i * space.x}
-            y2={initialCords[1].y + i * space.y}
-            style={{
-              strokeDasharray: [12, 4],
-              strokeDashoffset: [-offset]
-            }}
-            ref={ref => {
-              this.lines.push(ref);
-              this.checkLoad();
-            }}
-          />
-        ))}
-      </g>
-    );
-  }
-}
+export default props => (
+  <Falling {...props} posX={0} posY={15} rotation={0} speed={0.5}>
+    <path
+      fill="#33B5D9"
+      d="M33.9,40.1c-0.1,0.5-0.4,3.1-0.9,3.9c-0.1,0.2-0.3,0.4-0.4,0.5c-0.4,0.2-0.8,0.3-1.1,0.1
+		c-0.6-0.3-0.6-1.3-0.1-2.2C31.8,41.8,33.2,40.6,33.9,40.1z"
+      data-svg-origin="31.036643981933594 40.099998474121094"
+    />
+    <path
+      fill="#33B5D9"
+      d="M31.1,41.9c0,0.3-0.2,1.9-0.5,2.4c-0.1,0.1-0.2,0.2-0.2,0.3c-0.2,0.1-0.5,0.2-0.7,0
+		c-0.4-0.2-0.4-0.8-0.1-1.3C29.9,43,30.7,42.3,31.1,41.9z"
+      data-svg-origin="29.38615608215332 41.900001525878906"
+    />
+    <path
+      fill="#33B5D9"
+      d="M41.1,40.1c-0.1,0.5-0.4,3.1-0.9,3.9c-0.1,0.2-0.3,0.4-0.4,0.5c-0.4,0.2-0.8,0.3-1.1,0.1
+		c-0.6-0.3-0.6-1.3-0.1-2.2C39,41.8,40.4,40.7,41.1,40.1z"
+      data-svg-origin="38.23664474487305 40.099998474121094"
+    />
+    <path
+      fill="#33B5D9"
+      d="M26.1,40.1c-0.1,0.5-0.4,3.1-0.9,3.9c-0.1,0.2-0.3,0.4-0.4,0.5c-0.4,0.2-0.8,0.3-1.1,0.1
+		c-0.6-0.3-0.6-1.3-0.1-2.2C24,41.8,25.4,40.7,26.1,40.1z"
+      data-svg-origin="23.23664665222168 40.099998474121094"
+    />
+  </Falling>
+);

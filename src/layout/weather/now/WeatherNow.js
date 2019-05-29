@@ -32,7 +32,7 @@ export default props => {
     <WeatherNow>
       <CityName>{location}</CityName>
       <Temperature>{Math.ceil(temperature)}</Temperature>
-      <Icon type="Rain" animated />
+      <Icon type={conditions} animated />
     </WeatherNow>
   );
 };

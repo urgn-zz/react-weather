@@ -1,7 +1,64 @@
 import { API_GET_WEATHER_SUCCESS } from './consts';
 
 const initState = {
-  weather: {}
+  weather: {
+    '-1': {
+      now: {
+        location: 'Barabakow-city',
+        temperature: 123,
+        conditions: 'Thunderstorm'
+      },
+      week: [
+        {
+          date: new Date('1970-01-01'),
+          temperature: 123,
+          conditions: 'Clouds'
+        },
+        {
+          date: new Date('1970-01-02'),
+          temperature: 123,
+          conditions: 'Clear'
+        },
+        // TODO: add snow
+        {
+          date: new Date('1970-01-03'),
+          temperature: 123,
+          conditions: 'Snow'
+        },
+
+        // TODO: add mist
+        {
+          date: new Date('1970-01-04'),
+          temperature: 123,
+          conditions: 'Mist'
+        },
+        {
+          date: new Date('1970-01-05'),
+          temperature: 123,
+          conditions: 'Clouds'
+        },
+        {
+          date: new Date('1970-01-05'),
+          temperature: 123,
+          conditions: 'Rain'
+        },
+
+        // TODO: add drizzle
+        {
+          date: new Date('1970-01-05'),
+          temperature: 123,
+          conditions: 'Drizzle'
+        },
+
+        // TODO: add thunderstorm
+        {
+          date: new Date('1970-01-05'),
+          temperature: 123,
+          conditions: 'Thunderstorm'
+        }
+      ]
+    }
+  }
 };
 
 const getNowData = payload => {

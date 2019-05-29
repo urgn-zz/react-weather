@@ -6,7 +6,7 @@ const initState = {
       now: {
         location: 'Barabakow-city',
         temperature: 123,
-        conditions: 'Thunderstorm'
+        conditions: 'Mist'
       },
       week: [
         {

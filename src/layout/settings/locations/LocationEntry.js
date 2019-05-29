@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../../common/Button';
 
 const Entry = styled.div`
   margin-bottom: 4px;
@@ -17,8 +18,6 @@ const EntryRemove = styled.div`
   flex-grow: 0;
 `;
 
-const RemButton = styled.button``;
-
 export default props => {
   const { id, name, country, onRemove } = props;
   return (
@@ -27,7 +26,7 @@ export default props => {
         {name} [{country}]
       </EntryName>
       <EntryRemove>
-        <RemButton onClick={() => onRemove(id)}>DELETE</RemButton>
+        <Button onClick={() => onRemove(id)}>DELETE</Button>
       </EntryRemove>
     </Entry>
   );

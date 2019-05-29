@@ -12,8 +12,10 @@ import {
 import VIEWS from '../views';
 import LocationInput from './locations/LocationInput';
 import LocationsList from './locations/LocationsList';
+import Button from '../common/Button';
 
 const SettingsContainer = styled.div`
+  padding: 12px;
   display: flex;
   flex-direction: column;
   color: #fff;
@@ -30,13 +32,13 @@ const Settings = props => {
   const { isRequesting, list } = props;
   return (
     <SettingsContainer>
-      <button
+      <Button
         onClick={() => {
           props.setActiveView(VIEWS.WEATHER);
         }}
       >
-        BACK
-      </button>
+        Show weather
+      </Button>
       <Header>Add city</Header>
       <LocationInput add={props.requestLocationAdd} adding={isRequesting} />
       <LocationsList

@@ -5,6 +5,7 @@ import ClearSky from './ClarSky';
 import FewClouds from './FewClouds';
 import Rain from './Rain';
 import Snow from './Snow';
+import Mist from './Mist';
 import Thunderstorm from './Thunderstorm';
 
 const IconContainer = styled.div`
@@ -51,7 +52,6 @@ export default class Icon extends Component {
         {(() => {
           switch (type) {
             case 'Clear': {
-              // return <FewClouds {...this.props} />;
               return <ClearSky {...this.props} />;
             }
             case 'Clouds': {
@@ -65,6 +65,18 @@ export default class Icon extends Component {
             }
             case 'Snow': {
               return <Snow {...this.props} />;
+            }
+            case 'Tornado':
+            case 'Squall':
+            case 'Ash':
+            case 'Sand':
+            case 'Fog':
+            case 'Dust':
+            case 'Haze':
+            case 'Smoke':
+            case 'Drizzle':
+            case 'Mist': {
+              return <Mist {...this.props} />;
             }
             default: {
               return `icon for the ${type}`;

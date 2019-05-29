@@ -10,7 +10,9 @@ export default class Thunder extends Component {
   }
 
   componentWillUnmount() {
-    this.tween && this.tween.kill();
+    if (this.tween) {
+      this.tween.kill();
+    }
   }
 
   refLoaded() {

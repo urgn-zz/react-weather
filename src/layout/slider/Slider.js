@@ -3,16 +3,24 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reverse } from 'ramda';
 import styled from 'styled-components';
+import ReactSwipe from 'react-swipe';
 import { setActiveView, setActiveCityIndex } from '../../state/layout/actions';
 import WeatherView from '../weather/WeatherView';
-import WeatherNavigation from './WaetherNavigation';
 import VIEWS from '../views';
-import ReactSwipe from 'react-swipe';
+import WeatherNavigation from './WaetherNavigation';
 
 const SliederContainer = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+`;
+
+const CarouselContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 `;
 
 const Slider = props => {
@@ -28,12 +36,18 @@ const Slider = props => {
         activeCityIndex={cityIndex}
         activeCityList={list}
       />
-      <ReactSwipe
-        swipeOptions={{ continuous: false }}
-        ref={el => (reactSwipeEl = el)}
-      >
-      { list.map((city) => <div><WeatherView cityId={city.id} /></div>)}
-      </ReactSwipe>
+      <CarouselContainer>
+        <ReactSwipe
+          swipeOptions={{ continuous: false }}
+          ref={el => (reactSwipeEl = el)}
+        >
+          {list.map(city => (
+            <div>
+              <WeatherView cityId={city.id} />
+            </div>
+          ))}
+        </ReactSwipe>
+      </CarouselContainer>
     </SliederContainer>
   );
 };

@@ -9,6 +9,8 @@ export default styled.button`
   font-size: 12px;
   text-transform: capitalize;
   font-weight: bold;
+  min-width: 100px;
+  text-align: center;
 
   &:hover {
     background-color: #2185b6;

@@ -43,15 +43,15 @@ export default class FewClouds extends Component {
   }
 
   render() {
-    const { small, ref } = this.props;
+    const { small } = this.props;
     return (
       <>
         {small ? (
-          <svg ref={ref} width={50} height={50} viewBox="0 0 75 75">
+          <svg width={50} height={50} viewBox="0 0 75 75">
             <WhiteCloud />
           </svg>
         ) : (
-          <svg ref={ref} viewBox="0 0 75 75" width="300">
+          <svg viewBox="0 0 75 75" width="300">
             <WhiteCloud
               x={0}
               y={20}

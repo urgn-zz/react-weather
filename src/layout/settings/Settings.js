@@ -33,6 +33,7 @@ const Settings = props => {
   return (
     <SettingsContainer>
       <Button
+        disabled={!list || list.length < 1}
         onClick={() => {
           props.setActiveView(VIEWS.WEATHER);
         }}

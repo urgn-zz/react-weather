@@ -13,7 +13,7 @@ export default props => {
   return (
     <List>
       {items.map(item => (
-        <LocationEntry onRemove={onRemove} {...item} />
+        <LocationEntry key={item.id} onRemove={onRemove} {...item} />
       ))}
     </List>
   );

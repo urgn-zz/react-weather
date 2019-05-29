@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
+import Button from '../../common/Button';
 
 const LocationAddForm = styled.form`
   display: flex;
   flex-direction: row;
+  padding: 12px;
 `;
 
 const LocationAddInput = styled.input`
   display: flex;
   flex-grow: 1;
+  margin-right: 12px;
 `;
 
-const LocationAddSubmit = styled.button`
-  display: flex;
-  flex-grow: 1;
+const LocationAddSubmit = styled(Button)`
+  && {
+    display: flex;
+    flex-grow: 0;
+  }
 `;
 
 export default props => {
@@ -37,7 +42,7 @@ export default props => {
             value={values.location}
           />
           <LocationAddSubmit type="submit" disabled={adding}>
-            Submit
+            ADD
           </LocationAddSubmit>
         </LocationAddForm>
       )}

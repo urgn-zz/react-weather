@@ -7,7 +7,8 @@ import layoutReducer from './layout/reducer';
 import locationsReducer from './locations/reducer';
 import { apiReducer } from './api/reducer';
 import { initSagas } from './api/sagas';
-import { actionGetWeatherData } from './api/actions';
+
+import addTestLocations from './addTestLocations';
 
 const rootReducer = combineReducers({
   layout: layoutReducer,
@@ -27,4 +28,4 @@ export const store = createStore(
 
 sagaMiddleware.run(initSagas);
 
-store.dispatch(actionGetWeatherData(703448));
+addTestLocations(store);

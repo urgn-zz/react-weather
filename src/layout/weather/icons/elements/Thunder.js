@@ -22,8 +22,8 @@ export default class Thunder extends Component {
   animate() {
     const { animated } = this.props;
 
-    if (animated) {
-      this.tween = new TimelineLite({}).from(
+    if (animated && this.tween) {
+      this.tween = new TimelineLite().from(
         this.ref,
         0.3,
         {

@@ -28,10 +28,11 @@ export default (state = initState, action) => {
       return { ...state, request: { processing: false }, locations };
     }
     case REMOVE_LOCATION: {
-      const { id } = action.payload.value;
+      const id  = action.payload.value;
       const { locations } = state;
       const index = locations.indexOf(locations.find(l => l.id === id));
-      const newLocations = locations.slice(0).splice(index, 1);
+      const newLocations = locations.slice(0)
+      newLocations.splice(index, 1);
       return { ...state, locations: newLocations };
     }
     case REQUEST_LOCATION_FAIL: {

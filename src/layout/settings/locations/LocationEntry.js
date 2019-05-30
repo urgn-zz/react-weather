@@ -18,6 +18,18 @@ const EntryRemove = styled.div`
   flex-grow: 0;
 `;
 
+const RemButton = styled(Button)`
+  && {
+    border-color: #c72c41;
+    background-color: #801336;
+
+    &:hover {
+      background-color: #c72c41;
+    }
+  }
+`;
+
+
 export default props => {
   const { id, name, country, onRemove } = props;
   return (
@@ -26,7 +38,7 @@ export default props => {
         {name} [{country}]
       </EntryName>
       <EntryRemove>
-        <Button onClick={() => onRemove(id)}>DELETE</Button>
+        <RemButton onClick={() => onRemove(id)}>DELETE</RemButton>
       </EntryRemove>
     </Entry>
   );

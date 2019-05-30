@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
-export default props => {
+export default forwardRef((props, ref) => {
   const { x, y, scale } = props;
 
   return (
-    <g transform={`translate(${x || 0} ${y || 0}) scale(${scale || 1})`}>
+    <g transform={`translate(${x || 0} ${y || 0}) scale(${scale || 1})`} ref={ref}>
       <path
         fill="#D1D3D4"
         d="M65.3,47.8c0,2.6-3,4.8-6.7,4.8H18.4c-3.7,0-6.7-2.1-6.7-4.8l0,0c0-2.6,3-4.8,6.7-4.8h40.2
@@ -43,4 +43,4 @@ export default props => {
       />
     </g>
   );
-};
+});

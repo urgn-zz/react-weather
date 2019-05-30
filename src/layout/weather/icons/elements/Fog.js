@@ -65,7 +65,7 @@ export default class Fog extends Component {
           style={{
             opacity: 1,
             transform:
-              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);'
+              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)'
           }}
         />
 
@@ -83,7 +83,7 @@ export default class Fog extends Component {
           style={{
             opacity: 1,
             transform:
-              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.5, 0, 0, 1);'
+              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.5, 0, 0, 1)'
           }}
         />
 
@@ -101,7 +101,7 @@ export default class Fog extends Component {
           style={{
             opacity: 1,
             transform:
-              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1.5, 0, 0, 1);'
+              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1.5, 0, 0, 1)'
           }}
         />
 
@@ -119,7 +119,7 @@ export default class Fog extends Component {
           style={{
             opacity: 1,
             transform:
-              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1);'
+              'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1)'
           }}
         />
 
@@ -137,7 +137,7 @@ export default class Fog extends Component {
           style={{
             opacity: 0.85,
             transform:
-              'matrix3d(0.85, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 3, 0, 0, 1);'
+              'matrix3d(0.85, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 3, 0, 0, 1)'
           }}
         />
 
@@ -155,7 +155,7 @@ export default class Fog extends Component {
           style={{
             opacity: 0.7,
             transform:
-              'matrix3d(0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 5, 0, 0, 1);'
+              'matrix3d(0.7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 5, 0, 0, 1)'
           }}
         />
 
@@ -173,7 +173,7 @@ export default class Fog extends Component {
           style={{
             opacity: 0.75,
             transform:
-              'matrix3d(0.75, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 7, 0, 0, 1);'
+              'matrix3d(0.75, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 7, 0, 0, 1)'
           }}
         />
 
@@ -191,7 +191,7 @@ export default class Fog extends Component {
           style={{
             opacity: 0.65,
             transform:
-              'matrix3d(0.65, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 8, 0, 0, 1);'
+              'matrix3d(0.65, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 8, 0, 0, 1)'
           }}
         />
         <line

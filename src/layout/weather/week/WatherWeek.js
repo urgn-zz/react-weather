@@ -16,7 +16,7 @@ export default props => {
   return (
     <Days>
       {days.map(day => (
-        <DayOfWeek {...day} />
+        <DayOfWeek key={day.date.getTime()} {...day} />
       ))}
     </Days>
   );

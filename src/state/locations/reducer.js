@@ -6,13 +6,7 @@ import {
 } from './consts';
 
 const initState = {
-  locations: [
-    {
-      name: 'test-location',
-      id: -1,
-      country: 'oz'
-    }
-  ],
+  locations: [],
   request: {
     processing: false
   }

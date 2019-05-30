@@ -42,7 +42,9 @@ const Slider = props => {
           ref={el => (reactSwipeEl = el)}
         >
           {list.map(city => (
-            <div>
+            <div
+              key={city.id}
+            >
               <WeatherView cityId={city.id} />
             </div>
           ))}

@@ -51,7 +51,7 @@ export default class FewClouds extends Component {
             <WhiteCloud />
           </svg>
         ) : (
-          <svg viewBox="0 0 75 75" width="300">
+          <svg viewBox="0 0 75 75" width="5500">
             <WhiteCloud
               x={0}
               y={20}

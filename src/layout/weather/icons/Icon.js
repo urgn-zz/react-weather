@@ -14,6 +14,12 @@ const IconContainer = styled.div`
   justify-content: center;
 `;
 
+const BigIcon = styled(IconContainer)`
+  && {
+    min-height: 300px;
+  }
+`
+
 export default class Icon extends Component {
   constructor() {
     super();
@@ -41,10 +47,11 @@ export default class Icon extends Component {
   }
 
   render() {
-    const { type } = this.props;
+    const { type, small } = this.props;
+    const UsedContainer = small ? IconContainer : BigIcon;
 
     return (
-      <IconContainer
+      <UsedContainer
         ref={r => {
           this.body = r;
         }}
@@ -83,7 +90,7 @@ export default class Icon extends Component {
             }
           }
         })()}
-      </IconContainer>
+      </UsedContainer>
     );
   }
 }

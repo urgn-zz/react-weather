@@ -13,13 +13,11 @@ const SliederContainer = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+    justify-content: center;
 `;
 
 const CarouselContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+justify-content: center;
   flex-grow: 1;
 `;
 
@@ -37,16 +35,18 @@ const Slider = props => {
         activeCityList={list}
       />
       <CarouselContainer>
+        <div>
         <ReactSwipe
           swipeOptions={{ continuous: false }}
           ref={el => (reactSwipeEl = el)}
         >
           {list.map(city => (
-            <div>
+            <div key={city.id}>
               <WeatherView cityId={city.id} />
             </div>
           ))}
         </ReactSwipe>
+        </div>
       </CarouselContainer>
     </SliederContainer>
   );

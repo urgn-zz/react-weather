@@ -26,4 +26,7 @@ export const store = createStore(rootReducer, composeEnhancers(middlewares));
 
 sagaMiddleware.run(initSagas);
 
-addTestLocations(store);
+if (process.env.REACT_APP_USE_TEST_DATA) {
+  addTestLocations(store);
+}
+

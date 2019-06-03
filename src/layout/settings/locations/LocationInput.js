@@ -7,19 +7,34 @@ const LocationAddForm = styled.form`
   display: flex;
   flex-direction: row;
   padding: 12px;
+  text-align: center;
 `;
 
 const LocationAddInput = styled.input`
   display: flex;
   flex-grow: 1;
   margin-right: 12px;
+  border-radius: 30px;
+  border: 0px;
+  padding: 4px 15px;
 `;
 
 const LocationAddSubmit = styled(Button)`
   && {
+    border-color: #d9d872;
+    background-color: #58b368;
     display: flex;
     flex-grow: 0;
+
+    &:hover {
+      background-color: #d9d872;
+    }
   }
+`;
+
+const ButtonHolder = styled.div`
+  text-align: center;
+  width: 100%;
 `;
 
 export default props => {
@@ -41,9 +56,11 @@ export default props => {
             onBlur={handleBlur}
             value={values.location}
           />
+          
           <LocationAddSubmit type="submit" disabled={adding}>
-            ADD
+            <ButtonHolder>ADD</ButtonHolder>
           </LocationAddSubmit>
+          
         </LocationAddForm>
       )}
     </Formik>

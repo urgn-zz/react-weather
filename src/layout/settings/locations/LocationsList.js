@@ -9,7 +9,7 @@ const List = styled.div`
 
 export default props => {
   const { items, onRemove } = props;
-
+  
   return (
     <List>
       {items.map(item => (

@@ -18,15 +18,14 @@ const rootReducer = combineReducers({
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware, ReduxThunk];
+const middleware = applyMiddleware(sagaMiddleware, ReduxThunk);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const store = createStore(rootReducer, composeEnhancers(middlewares));
+export const store = createStore(rootReducer, composeEnhancers(middleware));
 
 sagaMiddleware.run(initSagas);
 
 if (process.env.REACT_APP_USE_TEST_DATA) {
   addTestLocations(store);
 }
-

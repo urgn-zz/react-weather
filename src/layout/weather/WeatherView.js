@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReactLoading from 'react-loading';
+import styled from 'styled-components';
 import WeatherNow from './now/WeatherNow';
 import WeatherWeek from './week/WatherWeek';
 import { actionGetWeatherData } from '../../state/api/actions';
+
+const LoadingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
 
 class WeatherView extends Component {
   componentDidMount() {
@@ -16,7 +24,6 @@ class WeatherView extends Component {
 
   render() {
     const { weather } = this.props;
-
     if (weather) {
       const { now, week } = weather;
 
@@ -27,7 +34,11 @@ class WeatherView extends Component {
         </>
       );
     }
-    return 'Loading...';
+    return (
+      <LoadingContainer>
+        <ReactLoading type="bubbles" />
+      </LoadingContainer>
+    );
   }
 }
 

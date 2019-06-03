@@ -39,13 +39,13 @@ const testLocations = [
     id: -1,
     name: 'Cloudy City',
     temperature: 1,
-    conditions: 'Clear'
+    conditions: 'Clouds'
   },
   {
     id: -2,
     name: 'Clear sky city',
     temperature: 1,
-    conditions: 'Clouds'
+    conditions: 'Clear'
   },
   {
     id: -3,
